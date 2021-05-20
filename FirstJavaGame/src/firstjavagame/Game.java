@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable { /*Runnable allows us to automatically have the run() method run without explicitly calling on it.*/
 
     @SuppressWarnings("compatibility:-8218418520252624046")/*What does lines 7-8 do?*/
     private static final long serialVersionUID = 1L;
