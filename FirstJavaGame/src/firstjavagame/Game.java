@@ -88,8 +88,8 @@ public class Game extends Canvas implements Runnable { /*Runnable allows us to a
         /*A Graphics object encapsulates state information needed for the basic rendering operations that Java supports*/
         Graphics g = bs.getDrawGraphics(); /*getDrawGraphics makes a link in between graphics(drawing data on to the screen) and bufferStrategy()*/
             
-        g.setColor(Color.red);
-//        g.setColor(rc);
+//        g.setColor(Color.red);
+        g.setColor(rc);
         g.fillRect(0, 0, WIDTH, HEIGHT);/*fillRect is filling the rectangle*/
         
         g.dispose(); /*Disposes of current graphics(disposes of systems resources) after every new frame*/
