@@ -78,7 +78,7 @@ public class Game extends Canvas implements Runnable {
         red = (int)(Math.random() * 255);
         green = (int)(Math.random() * 255);
         blue = (int)(Math.random() * 255);
-        Color c = new Color(red, green, blue);
+        Color rc = new Color(red, green, blue);
         
         BufferStrategy bs = this.getBufferStrategy();/*Creating a buffer strategy for Canvas since Game is a subclass of Canvas*/
         if(bs == null){    /*Line 78-81: If there is no buffer going on create a tripple buffer strategy and return the method.*/
@@ -88,8 +88,8 @@ public class Game extends Canvas implements Runnable {
         /*A Graphics object encapsulates state information needed for the basic rendering operations that Java supports*/
         Graphics g = bs.getDrawGraphics(); /*getDrawGraphics makes a link in between graphics(drawing data on to the screen) and bufferStrategy()*/
             
-        g.setColor(Color.blue);
-//        g.setColor(c);
+        g.setColor(Color.red);
+//        g.setColor(rc);
         g.fillRect(0, 0, WIDTH, HEIGHT);/*fillRect is filling the rectangle*/
         
         g.dispose(); /*Disposes of current graphics(disposes of systems resources) after every new frame*/
