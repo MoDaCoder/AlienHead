@@ -1,6 +1,9 @@
 package firstjavagame;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
@@ -51,7 +54,7 @@ public class Game extends Canvas implements Runnable {
             delta += (now - lastTime) / ns;
             lastTime = now;
             while(delta >= 1){
-                tick();
+                tick(); /*A TICK IS ALSO CALLED AN "update();"*/
                 delta--;
             }
             if(running)
@@ -64,6 +67,33 @@ public class Game extends Canvas implements Runnable {
                 frames = 0;
             }
         }
+    }
+    
+    private void tick(){ /*Updates our game*/
+        
+    }
+    
+    private void render(){ /*Renders our game*/ /*A bufferStrategy is a Temporary place for storage that holds data then is "updated" and "rendered" once the whole frame is ready. A buffer is as fast as 1/60th of a second.*/
+        int red,green,blue;
+        red = (int)(Math.random() * 255);
+        green = (int)(Math.random() * 255);
+        blue = (int)(Math.random() * 255);
+        Color c = new Color(red, green, blue);
+        
+        BufferStrategy bs = this.getBufferStrategy();/*Creating a buffer strategy for Canvas since Game is a subclass of Canvas*/
+        if(bs == null){    /*Line 78-81: If there is no buffer going on create a tripple buffer strategy and return the method.*/
+            this.createBufferStrategy(3); /*Tripple buffer for speed improvement*/
+            return;
+        }
+        /*A Graphics object encapsulates state information needed for the basic rendering operations that Java supports*/
+        Graphics g = bs.getDrawGraphics(); /*getDrawGraphics makes a link in between graphics(drawing data on to the screen) and bufferStrategy()*/
+            
+        g.setColor(Color.blue);
+//        g.setColor(c);
+        g.fillRect(0, 0, WIDTH, HEIGHT);/*fillRect is filling the rectangle*/
+        
+        g.dispose(); /*Disposes of current graphics(disposes of systems resources) after every new frame*/
+        bs.show(); /*Shows the next available buffer after g.dispose runs*/
     }
 
     public static void main(String[] args) {
